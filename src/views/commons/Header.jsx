@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import "semantic-ui-css/semantic.min.css";
 
+import header from "./css/header.module.css";
 function Header() {
   const user = localStorage.getItem("users");
   const navigate = useNavigate();
@@ -13,42 +13,50 @@ function Header() {
     navigate("/");
   }
   return (
-    <div className="ui secondary  menu">
-      <a className="item" href="/">
-        首页
-      </a>
-
-      <a className="item">攻略</a>
-      <a className="item" href="/">
-        社区
-      </a>
-
-      <div className="right menu">
-        <div className=" ui simple dropdown">
+    <div className={header.nav}>
+      <div className={header.item}>
+        <a className={header.a} href="/">
+          首页
+        </a>
+        <a className={header.a} href="/">
+          攻略
+        </a>
+        <a className={header.a} href="/">
+          社区
+        </a>
+        <a className={header.a} href="/">
+          社区
+        </a>
+      </div>
+      <div className={header.item}>
+        <input className={header.input} placeholder="搜索"></input>
+      </div>
+      <div className={header.item}>
+        <div className="">
           {user ? (
             <>
-              <img
-                className="ui mini image"
-                src={require("../img/1.jpg")}
-              ></img>
-
-              <div className="menu">
-                <a className="item" href={"/user/home"}>
-                  用户中心
-                </a>
-                <a className="item" onClick={logOut}>
-                  退出
-                </a>
-              </div>
+              <span className={header.dropdown}>
+                <img
+                  className={header.userImg}
+                  src={require("../img/1.jpg")}
+                ></img>
+                <div className={header.dropdown_content}>
+                  <p>用户信息</p>
+                  <p>用户信息</p>
+                  <p>用户信息</p>
+                  <p>用户信息</p>
+                  <p className={header.p} onClick={logOut}>
+                    退出
+                  </p>
+                </div>
+              </span>
             </>
           ) : (
-            <span className="" onClick={goLogin}>
+            <a className={header.a} href="/login">
               登录
-            </span>
+            </a>
           )}
         </div>
-
-        <div className="item"></div>
       </div>
     </div>
   );
