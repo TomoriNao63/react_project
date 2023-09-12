@@ -41,7 +41,7 @@ export default function Menu() {
                 <div className={adminMenu.item}>
                   <span>{list.title}</span>
                 </div>
-                <div className={adminMenu.item}></div>
+                <div className={adminMenu.line}></div>
               </div>
             ))}
           </div>

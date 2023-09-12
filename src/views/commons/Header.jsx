@@ -8,6 +8,9 @@ function Header() {
   function goLogin() {
     navigate("/login");
   }
+  function goHome() {
+    navigate("/user/home");
+  }
   function logOut() {
     localStorage.removeItem("users");
     navigate("/");
@@ -41,7 +44,7 @@ function Header() {
                   src={require("../img/1.jpg")}
                 ></img>
                 <div className={header.dropdown_content}>
-                  <p>用户信息</p>
+                  <p onClick={goHome}>用户中心</p>
                   <p>用户信息</p>
                   <p>用户信息</p>
                   <p>用户信息</p>

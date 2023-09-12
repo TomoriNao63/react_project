@@ -11,6 +11,7 @@ function Login() {
     email: "",
     agree: false,
   };
+
   const { register, handleSubmit, errors, watch, clearErrors } =
     useForm(defaultVaules);
   const navigate = useNavigate();
@@ -61,6 +62,8 @@ function Login() {
               type="password"
               {...register("lastName", { required: true })}
             />
+            <input name="captcha" type="text" />
+            <img src="localhost:8081/captcha/captcha.jpg" />
             <button type="submit">登录</button>
             <section>
               <a href="/reg">注册</a>
