@@ -8,6 +8,7 @@ function Movies() {
   const [data, setData] = useState([]);
   useEffect(() => {
     async function fetchData() {
+      console.log(localStorage.getItem("token"));
       const result = await api.getMovie();
       setData(result.data);
     }

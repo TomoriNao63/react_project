@@ -13,13 +13,12 @@ const http = axios.create({
 http.interceptors.request.use(
   (config) => {
     const token = localStorage.getItem("token");
-
     if (config.url === "/api/excel/download") {
       config.responseType = "blob";
     }
 
     // 特殊配置：登录接口，将 请求的头的 token 设置为空字符串
-    if (config.url === "/author/login") {
+    if (config.url === "/login") {
       config.headers["token"] = "";
     } else {
       config.headers["token"] = token || "";

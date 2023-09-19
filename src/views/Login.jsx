@@ -16,6 +16,9 @@ function Login() {
     useForm(defaultVaules);
   const navigate = useNavigate();
 
+  const imgUrl = "http://localhost:8081/captcha/captcha.jpg";
+  const onRefresh = () => {};
+
   const onsubmit = (values) => {
     const param = {
       username: values.firstName,
@@ -25,13 +28,9 @@ function Login() {
       .login(param)
       .then(function (res) {
         if (res.code === 0) {
-          const user = res.data;
-          if (user.principal.enabled) {
-            localStorage.setItem("users", JSON.stringify(user));
-            navigate("/");
-            console.log(user);
-          } else {
-          }
+          const token = res.data.token;
+          localStorage.setItem("token", token);
+          navigate("/");
         }
       })
       .catch(function (err) {
@@ -62,8 +61,8 @@ function Login() {
               type="password"
               {...register("lastName", { required: true })}
             />
-            <input name="captcha" type="text" />
-            <img src="localhost:8081/captcha/captcha.jpg" />
+            <input name="captcha" type="text" placeholder="验证码" />
+            <img src={imgUrl} />
             <button type="submit">登录</button>
             <section>
               <a href="/reg">注册</a>

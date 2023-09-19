@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 import header from "./css/header.module.css";
 function Header() {
-  const user = localStorage.getItem("users");
+  const user = localStorage.getItem("token");
   const navigate = useNavigate();
   function goLogin() {
     navigate("/login");
@@ -12,7 +12,7 @@ function Header() {
     navigate("/user/home");
   }
   function logOut() {
-    localStorage.removeItem("users");
+    localStorage.removeItem("token");
     navigate("/");
   }
   return (

@@ -1,11 +1,19 @@
 import React, { useEffect } from "react";
-import "semantic-ui-css/semantic.min.css";
+import Home from "./css/Home.module.css";
 import Menu from "./Menu";
+import Form from "./Form";
 
 function Admin() {
   return (
     <>
-      <Menu />
+      <div className={Home.container}>
+        <div>
+          <Menu />
+        </div>
+        <div>
+          <Form />
+        </div>
+      </div>
     </>
   );
 }

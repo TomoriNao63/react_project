@@ -1,11 +1,11 @@
 import { useNavigate } from "react-router-dom";
-import adminMenu from "./css/adminHome.module.css";
+import adminMenu from "./css/adminMenu.module.css";
 
 export default function Menu() {
   const navigate = useNavigate();
   const logOut = () => {
     {
-      localStorage.removeItem("users");
+      localStorage.removeItem("token");
     }
     navigate("/");
   };
@@ -38,9 +38,7 @@ export default function Menu() {
           <div className={adminMenu.menu}>
             {menuList.map((list, index) => (
               <div key={index}>
-                <div className={adminMenu.item}>
-                  <span>{list.title}</span>
-                </div>
+                <div className={adminMenu.item}>{list.title}</div>
                 <div className={adminMenu.line}></div>
               </div>
             ))}
