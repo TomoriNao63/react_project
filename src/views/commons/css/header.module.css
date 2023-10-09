@@ -22,13 +22,12 @@
 }
 
 .a{
-    height: 40px;
-    width: 50px;
+    height: 50px;
+    width: 100px;
     outline: none;
     text-decoration: none;
     display: inline-block;
-    margin-left: 30px;
-    margin-right: 0.625%;
+
     text-align: center;
     line-height: 3;
     color: black;
@@ -36,22 +35,30 @@
 }
 
 .a:hover{
-    background:rgba(200, 194, 194, 0.804);
-    border-radius: 30%;
+    background:rgba(222, 222, 222, 0.804);
+    border-radius: 25px;
     color:black;
 }
 
-.input{
-    color:black;
-    border-style: solid;
-    border-width: 1.5px;
-    height: 25px;
-    width: 200px;
-    border-radius: 5px;
+
+
+.search{
+    
+    color:rgba(99, 99, 99, 0.868);
+    background-color:rgba(235, 235, 235, 0.666);
+    border-style: none;
+    height: 35px;
+    width: 300px;
+    border-radius: 10px;
     transition:0.3s;
 }
 
-.input:hover{
+.search:focus{
+    color:rgba(0, 0, 0, 0.904);
+    
+}
+
+.search:hover{
 
 }
 
@@ -68,8 +75,8 @@
 
 
 .p{
-    width: 0px;
-    height: 0px;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .dropdown{
@@ -84,7 +91,8 @@
     height: 0px;
     position: absolute;
     text-align: center;
-    background:rgba(131, 130, 138, 0.774);
+    
+    background:rgba(220, 220, 220, 0.774);
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(53, 51, 99, 0.501);
     padding: 12px 16px;
@@ -94,7 +102,9 @@
 
 .dropdown:hover .dropdown_content {
     display: block;
-    width: 80px;
-    height: 200px;
+    width: auto;
+    height: auto;
+    
+
     border-radius: 15px;
 }

@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import "./index.css";
+
 import "./api/axios.js";
 import Header from "./views/commons/Header";
 import Login from "./views/Login";

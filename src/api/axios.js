@@ -38,7 +38,7 @@ http.interceptors.response.use(
     if (data.code === 0) {
       return data;
     } else {
-      return Promise.reject(new Error(res.data.message));
+      return Promise.reject(data);
     }
   },
   function (err) {

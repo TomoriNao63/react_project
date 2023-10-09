@@ -1,25 +1,25 @@
 import api from "../../api";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function User() {
   const user = JSON.parse(localStorage.getItem("users"));
+  const navigate = useNavigate();
 
-  const onTest = () => {
-    api
-      .home()
-      .then(function (res) {
-        console.log(res.data);
-      })
-      .catch(function (err) {
-        console.log(err);
-      });
-  };
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    async function fetchData() {
+      const result = await api.getUserInfo();
+      setData(result);
+    }
+    fetchData();
+  }, []);
 
   return (
     <>
       <div className="container">
-        <div>
-          <button onClick={onTest}>测试</button>
-        </div>
+        <div></div>
       </div>
     </>
   );

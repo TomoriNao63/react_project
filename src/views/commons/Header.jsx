@@ -32,7 +32,7 @@ function Header() {
         </a>
       </div>
       <div className={header.item}>
-        <input className={header.input} placeholder="搜索"></input>
+        <input className={header.search} placeholder="搜索"></input>
       </div>
       <div className={header.item}>
         <div className="">
@@ -40,16 +40,16 @@ function Header() {
             <>
               <span className={header.dropdown}>
                 <img
+                  onClick={goHome}
                   className={header.userImg}
                   src={require("../img/1.jpg")}
                 ></img>
                 <div className={header.dropdown_content}>
-                  <p onClick={goHome}>用户中心</p>
-                  <p>用户信息</p>
-                  <p>用户信息</p>
-                  <p>用户信息</p>
+                  <p className={header.p}>待定信息</p>
+                  <p className={header.p}>用户信息</p>
+                  <p className={header.p}>用户信息</p>
                   <p className={header.p} onClick={logOut}>
-                    退出
+                    退出登录
                   </p>
                 </div>
               </span>

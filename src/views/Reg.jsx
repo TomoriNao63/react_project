@@ -1,4 +1,3 @@
-import "semantic-ui-css/semantic.min.css";
 import { nanoid } from "nanoid";
 import { useForm } from "react-hook-form";
 import api from "../api";
