@@ -1,17 +1,25 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import api from "../../api";
 
 import header from "./css/header.module.css";
 function Header() {
   const user = localStorage.getItem("token");
   const navigate = useNavigate();
-  function goLogin() {
-    navigate("/login");
-  }
+
   function goHome() {
     navigate("/user/home");
   }
   function logOut() {
+    api
+      .logout()
+      .then(function (res) {
+        console.log(res);
+      })
+      .catch(function (err) {
+        console.log(err);
+      });
+
     localStorage.removeItem("token");
     navigate("/");
   }

@@ -10,8 +10,15 @@ export default function User() {
 
   useEffect(() => {
     async function fetchData() {
-      const result = await api.getUserInfo();
-      setData(result);
+      await api
+        .getUserInfo()
+        .then(function (res) {
+          console.log(res);
+        })
+        .catch(function (err) {
+          console.log(err);
+          navigate("/login");
+        });
     }
     fetchData();
   }, []);

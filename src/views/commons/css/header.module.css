@@ -7,7 +7,7 @@
 
 .nav{
     display: grid;
-    align-items: center;
+    
     grid-template-columns: 6fr 3fr 1fr;
     height: 50px;
     width: auto;
@@ -42,8 +42,8 @@
 
 
 
-.search{
-    
+.nav .search{
+    margin-top:7.5px;
     color:rgba(99, 99, 99, 0.868);
     background-color:rgba(235, 235, 235, 0.666);
     border-style: none;

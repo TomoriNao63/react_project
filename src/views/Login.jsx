@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import api from "../api";
@@ -34,7 +34,7 @@ function Login() {
         }
       })
       .catch(function (err) {
-        console.log(err.data);
+        console.log(err);
       });
   };
 

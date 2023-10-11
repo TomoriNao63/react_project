@@ -14,13 +14,19 @@ export default function Reg() {
 
   const onReg = (values) => {
     const param = {
-      id: nanoid(),
+      uid: nanoid(),
       username: values.firstName,
       password: values.lastName,
     };
 
-    const res = api.reg(param);
-    console.log(res);
+    api
+      .reg(param)
+      .then(function (res) {
+        console.log(res);
+      })
+      .catch(function (err) {
+        console.log(err);
+      });
   };
   return (
     <>

@@ -1,9 +1,26 @@
 .container{
+   
+}
+
+.navbar{
     display: flex;
+    align-items: center;
+
+    width: 100vw;
+    height: 50px;
+    background-color: #284d6145;
+}
+
+.icon{
+    margin-left: 30px;
+}
+
+.tableContainer{
     
 }
 
 .table{
+    
     width: 60vw;
     
 }

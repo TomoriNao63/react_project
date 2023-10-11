@@ -1,10 +1,19 @@
 import { useNavigate } from "react-router-dom";
 import adminMenu from "./css/adminMenu.module.css";
+import api from "../../api";
 
 export default function Menu() {
   const navigate = useNavigate();
   const logOut = () => {
     {
+      api
+        .logout()
+        .then(function (res) {
+          console.log(res);
+        })
+        .catch(function (err) {
+          console.log(err);
+        });
       localStorage.removeItem("token");
     }
     navigate("/");
