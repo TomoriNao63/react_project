@@ -34,11 +34,21 @@ http.interceptors.request.use(
 
 http.interceptors.response.use(
   function (res) {
-    const data = res.data;
-    if (data.code === 0) {
-      return data;
-    } else {
-      return Promise.reject(data);
+    let code = res.data.code;
+    if (code === 21) {
+      return Promise.reject(res); //账号已存在
+    }
+    if (code === 22) {
+      return Promise.reject(res); //未登录
+    }
+    if (code === 23) {
+      return Promise.reject(res); //账号或密码错误
+    }
+    if (code === 403) {
+      return Promise.reject(res); //没有权限
+    }
+    if (code === 0) {
+      return res.data;
     }
   },
   function (err) {

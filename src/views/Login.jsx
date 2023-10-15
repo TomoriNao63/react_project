@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import api from "../api";
 import styles from "./css/login.module.css";
+import ImgCL from "./commons/ImgCL";
 
 function Login() {
   const defaultVaules = {
@@ -15,9 +16,6 @@ function Login() {
   const { register, handleSubmit, errors, watch, clearErrors } =
     useForm(defaultVaules);
   const navigate = useNavigate();
-
-  const imgUrl = "http://localhost:8081/captcha/captcha.jpg";
-  const onRefresh = () => {};
 
   const onsubmit = (values) => {
     const param = {
@@ -62,7 +60,7 @@ function Login() {
               {...register("lastName", { required: true })}
             />
             <input name="captcha" type="text" placeholder="验证码" />
-            <img src={imgUrl} />
+            <ImgCL></ImgCL>
             <button type="submit">登录</button>
             <section>
               <a href="/reg">注册</a>

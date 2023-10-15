@@ -8,10 +8,10 @@ export default function Form() {
   const navigate = useNavigate();
   useEffect(() => {
     async function fetchData() {
-      const result = await api
+      await api
         .getUser()
         .then(function (res) {
-          setuserData(result.data);
+          setuserData(res.data);
         })
         .catch(function (err) {
           navigate("/login");
@@ -32,21 +32,25 @@ export default function Form() {
           <table border={1} className={adminForm.table}>
             <thead>
               <tr>
+                <th></th>
                 <th>Uid</th>
                 <th>名称</th>
-                <th>性别</th>
+                <th>密码</th>
                 <th>账号可用</th>
-                <th>权限</th>
+                <th>角色</th>
               </tr>
             </thead>
             <tbody>
               {userData.map((user, index) => (
                 <tr key={index}>
+                  <td>
+                    <button type="checkout">s</button>
+                  </td>
                   <td>{user.uid}</td>
                   <td>{user.username}</td>
                   <td>{user.password}</td>
                   <td>{user.enabled ? "可用" : "不可用"}</td>
-                  <td></td>
+                  <td>{user.role}</td>
                 </tr>
               ))}
             </tbody>

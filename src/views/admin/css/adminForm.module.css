@@ -1,14 +1,15 @@
 .container{
-   
+    background-color: #e3e3e385;
+    height: 100vh;
 }
 
 .navbar{
     display: flex;
     align-items: center;
-
     width: 100vw;
     height: 50px;
-    background-color: #284d6145;
+    background-color: #ffffff45;
+    box-shadow: 0px 5px 5px 0px rgba(187, 187, 187, 0.501);
 }
 
 .icon{
@@ -17,10 +18,11 @@
 
 .tableContainer{
     
+
 }
 
 .table{
-    
+    margin:100px;
     width: 60vw;
     
 }

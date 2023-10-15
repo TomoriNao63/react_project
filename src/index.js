@@ -2,11 +2,10 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 
 import "./api/axios.js";
-import Header from "./views/commons/Header";
+import Index from "./views/index.jsx";
 import Login from "./views/Login";
-import Body from "./views/commons/Body";
-import User from "./views/user/Home";
-import Admin from "./views/admin/home";
+import UserIndex from "./views/user/index.jsx";
+import AdminIndex from "./views/admin/index.jsx";
 import NotFound from "./views/NotFound";
 import Reg from "./views/Reg";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
@@ -14,21 +13,9 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: (
-      <>
-        <Header />
-        <Body />
-      </>
-    ),
+    element: <Index />,
   },
-  {
-    path: "/zixun",
-    element: (
-      <>
-        <Header />
-      </>
-    ),
-  },
+
   {
     path: "/login",
     element: <Login />,
@@ -39,23 +26,18 @@ const router = createBrowserRouter([
   },
   {
     path: "/user/home",
-    element: (
-      <>
-        <Header />
-        <User />
-      </>
-    ),
+    element: <UserIndex />,
   },
   {
     path: "/admin/home",
-    element: <Admin />,
+    element: <AdminIndex />,
   },
   {
     path: "/root/test",
     element: <>root test</>,
   },
   {
-    path: "/notFound",
+    path: "*",
     element: <NotFound />,
   },
 ]);

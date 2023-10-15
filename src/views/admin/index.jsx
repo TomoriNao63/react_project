@@ -1,8 +1,12 @@
-import { useNavigate, Link } from "react-router-dom";
+import React from "react";
+import index from "./css/Home.module.css";
+import Menu from "./Menu";
+import Form from "./Form";
+import { Link, Route, Routes, useNavigate } from "react-router-dom";
 import adminMenu from "./css/adminMenu.module.css";
 import api from "../../api";
 
-export default function Menu() {
+export default function AdminIndex() {
   const navigate = useNavigate();
   const logOut = () => {
     {
@@ -35,25 +39,16 @@ export default function Menu() {
       href: "",
     },
   ];
+
   return (
     <>
-      <div className={adminMenu.form_background}>
-        <div className={adminMenu.nav}>
-          <div className={adminMenu.menu}>
-            {menuList.map((list, index) => (
-              <div key={index}>
-                <Link className={adminMenu.item} to={list.href}>
-                  {list.title}
-                </Link>
-                <div className={adminMenu.line}></div>
-              </div>
-            ))}
-          </div>
-
-          <div className={adminMenu.item} onClick={logOut}>
-            退出
-          </div>
-        </div>
+      <div className={index.container}>
+        <Menu />
+        <Routes>
+          <Route path="/admin/" element={<Menu />}>
+            <Route path="userMagage" element={<Form />} />
+          </Route>
+        </Routes>
       </div>
     </>
   );

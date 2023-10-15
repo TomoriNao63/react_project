@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import api from "../../api";
 
@@ -6,6 +6,18 @@ import header from "./css/header.module.css";
 function Header() {
   const user = localStorage.getItem("token");
   const navigate = useNavigate();
+
+  const [navItem, setnavItem] = useState([]);
+  useEffect(() => {
+    api
+      .getHeaderItem()
+      .then(function (res) {
+        setnavItem(res.data);
+      })
+      .catch(function (err) {
+        console.log(err);
+      });
+  }, []);
 
   function goHome() {
     navigate("/user/home");
@@ -15,29 +27,21 @@ function Header() {
       .logout()
       .then(function (res) {
         console.log(res);
+        localStorage.removeItem("token");
+        navigate("/");
       })
       .catch(function (err) {
         console.log(err);
       });
-
-    localStorage.removeItem("token");
-    navigate("/");
   }
   return (
     <div className={header.nav}>
       <div className={header.item}>
-        <a className={header.a} href="/">
-          首页
-        </a>
-        <a className={header.a} href="/">
-          攻略
-        </a>
-        <a className={header.a} href="/">
-          社区
-        </a>
-        <a className={header.a} href="/">
-          社区
-        </a>
+        {navItem.map((item, index) => (
+          <a key={index} href={item.href}>
+            <li className={header.a}>{item.name}</li>
+          </a>
+        ))}
       </div>
       <div className={header.item}>
         <input className={header.search} placeholder="搜索"></input>

@@ -1,19 +1,18 @@
 import api from "../../api";
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 export default function User() {
-  const user = JSON.parse(localStorage.getItem("users"));
   const navigate = useNavigate();
 
-  const [data, setData] = useState([]);
+  const [userData, setuserData] = useState([]);
 
   useEffect(() => {
     async function fetchData() {
       await api
         .getUserInfo()
         .then(function (res) {
-          console.log(res);
+          setuserData(res.data);
         })
         .catch(function (err) {
           console.log(err);
@@ -26,7 +25,15 @@ export default function User() {
   return (
     <>
       <div className="container">
-        <div></div>
+        <div>
+          <p>{userData.uid}</p>
+          <p>{userData.name}</p>
+          <p>{userData.sex}</p>
+          <p>{userData.email}</p>
+          <p>{userData.sign_time}</p>
+          <p>{typeof userData.user_img}</p>
+          <img src={userData.user_img}></img>
+        </div>
       </div>
     </>
   );

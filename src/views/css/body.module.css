@@ -1,6 +1,10 @@
-
+.container{
+    height: 100vh;
+    background-color: rgba(240, 240, 240, 0.832);
+}
 
 .head{
+    
     align-items: center;
     justify-content: center;
 }

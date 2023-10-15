@@ -1,8 +1,8 @@
 import { userApi } from "./user";
-import { movieApi } from "./movie";
+import { pageApi } from "./page";
 const api = {
   ...userApi,
-  ...movieApi,
+  ...pageApi,
 };
 
 export default api;
