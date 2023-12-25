@@ -1,8 +1,8 @@
-import { useEffect } from "react";
+import { useState,useEffect } from "react";
 import api from "../../api";
 
 export default function ImgCL() {
-  const captchaImg = null;
+  const [captchaImg,setCaptchaImg] = useState();
   useEffect(() => {
     async function getCaptcha() {
       await api
@@ -12,7 +12,7 @@ export default function ImgCL() {
         .then(function (res) {
           let blob = new Blob([res.data], { type: "img/jpeg" });
           let url = URL.createObjectURL(blob);
-          let captchaImg = document.getElementById("captchaImg");
+          setCaptchaImg(document.getElementById("captchaImg"));
           if (captchaImg) {
             captchaImg.src = url;
             captchaImg.onload = function () {
