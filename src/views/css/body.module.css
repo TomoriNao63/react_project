@@ -1,29 +1,29 @@
 .container{
-    height: 100vh;
+
+    
     background-color: rgba(240, 240, 240, 0.832);
-}
-
-.head{
-    
-    align-items: center;
-    justify-content: center;
-}
-
-.headImg{
-    width: 100vw;
-    height: 40vh;
-}
-
-
-.lists{
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 300px;
+    grid-template-columns: 1fr 8fr 1fr;
+}
 
+.body{
+    margin-top:50px;
+
+}
+
+.item{
+    margin-bottom: 40px;
+    width: 600px;
+    border-style: solid;
+    border-width: 0.5px;
     
 }
-.list_img{
-    height: 16vh;
+
+
+
+
+
+.image{
+    width: 80px;
+    height: 100px;
 }
-
-

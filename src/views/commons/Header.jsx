@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import api from "../../api";
 
 import header from "./css/header.module.css";
 function Header() {
-  const user = localStorage.getItem("token");
   const navigate = useNavigate();
+  const user = localStorage.getItem("token");
+  const [headImg, setheadImg] = useState();
 
   const [navItem, setnavItem] = useState([]);
   useEffect(() => {
@@ -13,11 +14,21 @@ function Header() {
       .getHeaderItem()
       .then(function (res) {
         setnavItem(res.data);
+        getHeadImg();
       })
       .catch(function (err) {
         console.log(err);
       });
   }, []);
+
+  function getHeadImg() {
+    api
+      .getUserInfo()
+      .then(function (res) {
+        setheadImg(res.data.user_img);
+      })
+      .catch(function (err) {});
+  }
 
   function goHome() {
     navigate("/user/home");
@@ -26,8 +37,7 @@ function Header() {
     api
       .logout()
       .then(function (res) {
-        console.log(res);
-        localStorage.removeItem("token");
+        localStorage.clear();
         navigate("/");
       })
       .catch(function (err) {
@@ -35,45 +45,54 @@ function Header() {
       });
   }
   return (
-    <div className={header.nav}>
-      <div className={header.item}>
-        {navItem.map((item, index) => (
-          <a key={index} href={item.href}>
-            <li className={header.a}>{item.name}</li>
-          </a>
-        ))}
-      </div>
-      <div className={header.item}>
-        <input className={header.search} placeholder="搜索"></input>
-      </div>
-      <div className={header.item}>
-        <div className="">
-          {user ? (
-            <>
-              <span className={header.dropdown}>
-                <img
-                  onClick={goHome}
-                  className={header.userImg}
-                  src={require("../img/1.jpg")}
-                ></img>
-                <div className={header.dropdown_content}>
-                  <p className={header.p}>待定信息</p>
-                  <p className={header.p}>用户信息</p>
-                  <p className={header.p}>用户信息</p>
-                  <p className={header.p} onClick={logOut}>
-                    退出登录
-                  </p>
-                </div>
-              </span>
-            </>
-          ) : (
-            <a className={header.a} href="/login">
-              登录
-            </a>
-          )}
+    <>
+      <div className={header.nav}>
+        <div className={header.item}>
+          {navItem.map((item, index) => (
+            <Link key={index} to={item.href}>
+              <li className={header.a}>{item.name}</li>
+            </Link>
+          ))}
+        </div>
+        <div className={header.item}>
+          <input className={header.search} placeholder="搜索"></input>
+        </div>
+        <div className={header.item}>
+          <div className="">
+            {user ? (
+              <>
+                <span className={header.dropdown}>
+                  <img
+                    onClick={goHome}
+                    className={header.userImg}
+                    src={headImg}
+                  ></img>
+                  <div className={header.dropdown_content}>
+                    <a className={header.userA} href="">
+                      待定信息
+                    </a>
+                    <a className={header.userA} href="">
+                      用户信息
+                    </a>
+                    <a className={header.userA} href="">
+                      用户信息
+                    </a>
+                    <a className={header.userA} onClick={logOut}>
+                      退出登录
+                    </a>
+                  </div>
+                </span>
+              </>
+            ) : (
+              <a className={header.a} href="/login">
+                登录
+              </a>
+            )}
+          </div>
         </div>
       </div>
-    </div>
+      <div className={header.shadow}></div>
+    </>
   );
 }
 

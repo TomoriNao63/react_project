@@ -2,50 +2,16 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 
 import "./api/axios.js";
-import Index from "./views/index.jsx";
-import Login from "./views/Login";
-import UserIndex from "./views/user/index.jsx";
-import AdminIndex from "./views/admin/index.jsx";
-import NotFound from "./views/NotFound";
-import Reg from "./views/Reg";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <Index />,
-  },
-
-  {
-    path: "/login",
-    element: <Login />,
-  },
-  {
-    path: "/reg",
-    element: <Reg />,
-  },
-  {
-    path: "/user/home",
-    element: <UserIndex />,
-  },
-  {
-    path: "/admin/home",
-    element: <AdminIndex />,
-  },
-  {
-    path: "/root/test",
-    element: <>root test</>,
-  },
-  {
-    path: "*",
-    element: <NotFound />,
-  },
-]);
+import { RouterProvider } from "react-router-dom";
+import { router } from "./router/index.js";
+import App from "./App.js";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <RouterProvider router={router} />
+    <App />
   </React.StrictMode>
 );
 

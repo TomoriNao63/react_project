@@ -1,7 +1,7 @@
 import { nanoid } from "nanoid";
 import { useForm } from "react-hook-form";
 import api from "../api";
-
+import styles from "./css/login.module.css";
 export default function Reg() {
   const defaultVaules = {
     firstName: "",
@@ -30,8 +30,8 @@ export default function Reg() {
   };
   return (
     <>
-      <div className="ui container">
-        <div className="ui form">
+      <div>
+        <div className={styles.inputGroup}>
           <input
             name="username"
             placeholder="账号"
@@ -44,10 +44,11 @@ export default function Reg() {
             type="password"
             {...register("lastName", { required: true })}
           ></input>
-          <button className="ui button" onClick={handleSubmit(onReg)}>
-            注册
-          </button>
         </div>
+
+        <button className={styles.submitButton} onClick={handleSubmit(onReg)}>
+          注册
+        </button>
       </div>
     </>
   );

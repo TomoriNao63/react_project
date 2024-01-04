@@ -50,7 +50,7 @@
     width:120px;
 }
 
-.item{
+.li{
 
     height: 40px;
     width: 110px;
@@ -64,11 +64,24 @@
     user-select: none;
     color:rgba(205, 205, 205, 0.852);
 }
-.item:hover{
+.li:hover{
     background:rgba(255,255,255,0.1);
     color:aliceblue;
 }
-.nav:hover .item{
+
+.li .a{
+    display: inline-block;
+    padding:10px 22px;
+    transition:0.3s;
+    color:rgba(205, 205, 205, 0.852);
+    text-decoration: none;
+}
+
+.a:hover{
+    color:aliceblue;
+}
+
+.nav:hover .li{
     margin-left:30px;
 
 }

@@ -43,11 +43,31 @@ export default function AdminIndex() {
   return (
     <>
       <div className={index.container}>
-        <Menu />
+        <div className={adminMenu.form_background}>
+          <div className={adminMenu.nav}>
+            <div className={adminMenu.menu}>
+              {menuList.map((list, index) => (
+                <ul key={index}>
+                  <li className={adminMenu.li}>
+                    <Link className={adminMenu.a} to={list.href}>
+                      {" "}
+                      {list.title}
+                    </Link>
+                  </li>
+
+                  <div className={adminMenu.line}></div>
+                </ul>
+              ))}
+            </div>
+
+            <div className={adminMenu.li} onClick={logOut}>
+              退出
+            </div>
+          </div>
+        </div>
+
         <Routes>
-          <Route path="/admin/" element={<Menu />}>
-            <Route path="userMagage" element={<Form />} />
-          </Route>
+          <Route path="/admin/userMagage" element={<Form />} />
         </Routes>
       </div>
     </>

@@ -1,19 +1,39 @@
 import React, { useEffect, useState } from "react";
-import api from "../api";
 import bodyCSS from "./css/body.module.css";
+import api from "../api/index.js";
+import Pinglun from "./commons/Pinglun.jsx";
 
 function Body() {
   const [data, setData] = useState([]);
   useEffect(() => {
-    async function fetchData() {}
+    async function fetchData() {
+      await api
+        .getIndex()
+        .then(function (res) {
+          setData(res.data);
+        })
+        .catch(function (err) {
+          console.log(err);
+        });
+    }
     fetchData();
   }, []);
 
   return (
     <>
       <div className={bodyCSS.container}>
-        <div className={bodyCSS.head}></div>
-        <div className={bodyCSS.body}></div>
+        <div className={bodyCSS.left_sider}></div>
+        <div className={bodyCSS.body}>
+          {data.map((item, index) => (
+            <div className={bodyCSS.item} key={index}>
+              <h2 className={bodyCSS.title}>{item.name}</h2>
+              <h3 className={bodyCSS.typename}>{item.typename} </h3>
+              <span className={bodyCSS.context}>{item.text}</span>
+              <img className={bodyCSS.image} src={item.img}></img>
+            </div>
+          ))}
+        </div>
+        <div className={bodyCSS.right_sider}></div>
       </div>
     </>
   );

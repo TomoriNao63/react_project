@@ -41,16 +41,20 @@ export default function Menu() {
         <div className={adminMenu.nav}>
           <div className={adminMenu.menu}>
             {menuList.map((list, index) => (
-              <div key={index}>
-                <Link className={adminMenu.item} to={list.href}>
-                  {list.title}
-                </Link>
+              <ul key={index}>
+                <li className={adminMenu.li}>
+                  <Link className={adminMenu.a} to={list.href}>
+                    {" "}
+                    {list.title}
+                  </Link>
+                </li>
+
                 <div className={adminMenu.line}></div>
-              </div>
+              </ul>
             ))}
           </div>
 
-          <div className={adminMenu.item} onClick={logOut}>
+          <div className={adminMenu.li} onClick={logOut}>
             退出
           </div>
         </div>

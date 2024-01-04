@@ -4,7 +4,7 @@ const http = axios.create({
   headers: {
     token: localStorage.getItem("token") || "",
   },
-  baseURL: "http://localhost:8081",
+
   timeout: 2 * 60 * 1000,
   withCredentials: true,
 });

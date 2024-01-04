@@ -1,20 +1,6 @@
-// import { BrowserRouter, Routes, Route } from "react-router-dom";
-// import Header from "./views/commons/Header";
-// import UserIndex from "./views/user";
-// import Menu from "./views/admin/Menu";
-// function App() {
-//   return (
-//     <BrowserRouter>
-//       <Routes>
-//         <Route path="/" element={<Header />}>
-//           <Route path="/user/home" element={<UserIndex />}></Route>
-//         </Route>
-//         <Route path="/admin" element={<Menu />}>
-//           <Route></Route>
-//         </Route>
-//       </Routes>
-//     </BrowserRouter>
-//   );
-// }
+import React, { useEffect, useState } from "react";
+import { Link, BrowserRouter, Routes, Route } from "react-router-dom";
 
-// export default App;
+function App() {}
+
+export default App;

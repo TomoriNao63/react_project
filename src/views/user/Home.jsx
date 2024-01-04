@@ -1,40 +1,44 @@
-import api from "../../api";
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 
+import { Link, Outlet, Route, Routes, useNavigate } from "react-router-dom";
+import api from "../../api";
+import userhome from "./css/userhome.module.css";
+import UserInfo from "./UserInfo";
 export default function User() {
   const navigate = useNavigate();
-
-  const [userData, setuserData] = useState([]);
+  const [userItem, setuserItem] = useState([]);
 
   useEffect(() => {
-    async function fetchData() {
-      await api
-        .getUserInfo()
-        .then(function (res) {
-          setuserData(res.data);
-        })
-        .catch(function (err) {
-          console.log(err);
-          navigate("/login");
-        });
-    }
-    fetchData();
+    api
+      .getUserItem()
+      .then(function (res) {
+        setuserItem(res.data);
+      })
+      .catch(function (err) {
+        navigate("/");
+      });
   }, []);
 
   return (
     <>
-      <div className="container">
-        <div>
-          <p>{userData.uid}</p>
-          <p>{userData.name}</p>
-          <p>{userData.sex}</p>
-          <p>{userData.email}</p>
-          <p>{userData.sign_time}</p>
-          <p>{typeof userData.user_img}</p>
-          <img src={userData.user_img}></img>
+      <section>
+        <div className={userhome.container}>
+          <div className={userhome.left_sider}></div>
+          <div className={userhome.body}>
+            <div className={userhome.form}>
+              <ul className={userhome.ul}>
+                {userItem.map((item, index) => (
+                  <Link className={userhome.li} key={index} to={item.href}>
+                    <li className={userhome.a}>{item.name}</li>
+                  </Link>
+                ))}
+              </ul>
+              <Outlet />
+              <div className={userhome.right_sider}></div>
+            </div>
+          </div>
         </div>
-      </div>
+      </section>
     </>
   );
 }

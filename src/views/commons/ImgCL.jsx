@@ -1,36 +1,31 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import api from "../../api";
-
+import styles from "../css/login.module.css";
 export default function ImgCL() {
-  const captchaImg = null;
-  useEffect(() => {
-    async function getCaptcha() {
-      await api
-        .captcha({
-          responseType: "blob",
-        })
-        .then(function (res) {
-          let blob = new Blob([res.data], { type: "img/jpeg" });
-          let url = URL.createObjectURL(blob);
-          let captchaImg = document.getElementById("captchaImg");
-          if (captchaImg) {
-            captchaImg.src = url;
-            captchaImg.onload = function () {
-              URL.revokeObjectURL(url);
-            };
-          }
-          console.log(res.data);
-        })
-        .catch(function (err) {
-          console.log(err.blob);
-        });
-    }
-    getCaptcha();
-  }, [captchaImg]);
+  const [captchaImg, setcaptchaImg] = useState();
+  const [imgUrl, setImgUrl] = useState();
+
+  const getCaptcha = async () => {
+    await api
+      .captcha({
+        responseType: "blob",
+      })
+      .then(function (res) {
+        const blob = new Blob([res.data], { type: "img/jpeg" });
+        setcaptchaImg(URL.createObjectURL(blob));
+      })
+      .catch(function (err) {
+        console.log(err.blob);
+      });
+  };
 
   return (
     <>
-      <img id="captchaImg" src="" style={{ cursor: "pointer" }} />
+      <img
+        className={styles.captchaImg}
+        id="captchaImg"
+        src={"/api/captcha/captcha"}
+      />
     </>
   );
 }

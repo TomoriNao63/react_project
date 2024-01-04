@@ -1,0 +1,25 @@
+
+.fileUpLoad{
+
+}
+
+
+.fileInput{
+    display: none;
+}
+
+.fileSelect{
+    margin-top: 10px;
+    height: 30px;
+    width: 70px;
+    background-color: rgba(7, 135, 255, 0.303);
+    border-style: none;
+    border-radius: 5px;
+    transition:0.2s;
+}
+
+
+
+.fileSelect:hover{
+    box-shadow: 0px 0px 10px rgba(7, 135, 255, 0.303);
+}
