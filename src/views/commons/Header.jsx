@@ -31,7 +31,7 @@ function Header() {
   }
 
   function goHome() {
-    navigate("/user/home");
+    window.open("/user/home", "_blank");
   }
   function logOut() {
     api

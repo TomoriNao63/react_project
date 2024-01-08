@@ -1,11 +1,11 @@
 import React from "react";
-import { MovieStore } from "./movieStore";
+import { useAppSelectorStore } from "./useAppSelector";
 
 //1.声明一个rootStore
 class RootStore {
   constructor() {
     //对子模块进行实例化操作
-    this.movieStore = new MovieStore();
+    this.useAppSelectorStore = new useAppSelectorStore();
   }
 }
 //实例化操作

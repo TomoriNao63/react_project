@@ -1,6 +1,9 @@
+import { useMemo } from "react";
+
 import Header from "./commons/Header";
 import Body from "./Body";
-export default function Index() {
+
+function Index() {
   return (
     <>
       <Header />
@@ -8,3 +11,5 @@ export default function Index() {
     </>
   );
 }
+
+export default Index;

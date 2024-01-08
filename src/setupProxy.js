@@ -8,12 +8,12 @@ module.exports = function (app) {
       pathRewrite: { "^/api": "" },
     }),
     proxy("/images", {
-      target: "http://images.cx.com/img/",
+      target: "http://images.cx.com/",
       changeOrigin: true,
       pathRewrite: { "^/images": "" },
     }),
     proxy("/user/images", {
-      target: "http://images.cx.com/img/",
+      target: "http://images.cx.com/",
       changeOrigin: true,
       pathRewrite: { "^/user/images": "" },
     })

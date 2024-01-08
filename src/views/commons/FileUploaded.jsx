@@ -1,13 +1,12 @@
 import React, { useRef } from "react";
+import { Link } from "react-router-dom";
 import upLoader from "./css/upLoader.module.css";
-export default function FileUploader(onFileSelectSuccess, onFileSelectError) {
+const FileUploader = ({ onSelectedError, onSelectedSuccess }) => {
   const fileInput = useRef();
-
   const handlerFileInput = (e) => {
-    const file = e.target.file[0];
-    if (file.size > 10240)
-      onFileSelectError({ error: "File size cannot exceed more than 10MB" });
-    else onFileSelectSuccess(file);
+    const file = e.target.files[0];
+    if (file.size > 2048000) onSelectedError({ error: "文件大小不能大于2MB" });
+    else onSelectedSuccess(file);
   };
 
   return (
@@ -19,12 +18,12 @@ export default function FileUploader(onFileSelectSuccess, onFileSelectError) {
         className={upLoader.fileInput}
         accept="image/*"
       />
-      <button
+      <Link
         onClick={(e) => fileInput.current && fileInput.current.click()}
-        className={upLoader.fileSelect}
-      >
-        选择图片
-      </button>
+        className={upLoader.imgLink}
+      ></Link>
     </div>
   );
-}
+};
+
+export default FileUploader;

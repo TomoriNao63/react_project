@@ -7,4 +7,5 @@ export let userApi = {
   getUser: () => get("/api/admin/getUser"),
   getUserItem: () => get("/api/user/item"),
   getUserInfo: (p) => get("/api/user/home", p),
+  uploadUserImg: (p) => postMultipart("/api/user/upload/userImg", p),
 };

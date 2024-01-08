@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, Outlet, Route, Routes, useNavigate } from "react-router-dom";
-import FileUploaded from "../commons/FileUploaded";
+import FileUploader from "../commons/FileUploaded";
 import api from "../../api";
 import userhome from "./css/userhome.module.css";
 export default function UserInfo() {
@@ -10,7 +10,17 @@ export default function UserInfo() {
 
   const [selectedFile, setSelectedFile] = useState();
 
-  function upLoadImg() {}
+  function upLoadHeadImg() {
+    console.log(selectedFile.size);
+    api
+      .uploadUserImg(selectedFile)
+      .then(function (res) {
+        console.log(res.data);
+      })
+      .catch(function (err) {
+        console.log(err);
+      });
+  }
 
   useEffect(() => {
     api
@@ -51,12 +61,20 @@ export default function UserInfo() {
 
             <div className={userhome.headImg}>
               <img src={userData.user_img} className={userhome.user_img}></img>
-              <FileUploaded
-                onFileSelectSuccess={(file) => setSelectedFile(file)}
-                onFileSelectError={({ error }) => alert(error)}
+
+              <FileUploader
+                onSelectedSuccess={(file) => {
+                  setSelectedFile(file);
+                  const imgData = URL.createObjectURL(file);
+                }}
+                onSelectedError={({ error }) => alert(error)}
               />
+              <button className={userhome.uploadButton} onClick={upLoadHeadImg}>
+                确认
+              </button>
             </div>
           </div>
+          <button className={userhome.userInfoButton}>确认</button>
         </div>
       </section>
     </>
